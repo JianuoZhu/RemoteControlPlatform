@@ -1,10 +1,12 @@
 {
   "dependencies": {
-    "@tailwindcss/postcss": "^4.1.10",
+    "@tailwindcss/vite": "^4.1.11",
     "express": "^5.1.0",
+    "flowbite-react": "^0.11.8",
     "fs": "^0.0.1-security",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.2",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1"
@@ -15,7 +17,7 @@
     "@vitejs/plugin-react": "^4.6.0",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.10",
+    "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3",
     "vite": "^7.0.0"
   },
@@ -27,7 +29,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postinstall": "flowbite-react patch"
   },
   "repository": {
     "type": "git",
@@ -36,7 +39,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/JianuoZhu/RemoteControlPlatform/issues"
   },

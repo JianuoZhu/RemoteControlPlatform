@@ -1,8 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-const fs    = require('fs')
+import tailwindcss from '@tailwindcss/vite'
+import fs from 'node:fs' 
+import flowbiteReact from "flowbite-react/plugin/vite";
+
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss(), flowbiteReact()],
   server: {
     host: true,
     port: 3000,
