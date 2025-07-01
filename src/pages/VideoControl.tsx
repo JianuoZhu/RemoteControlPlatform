@@ -1,7 +1,7 @@
 // src/pages/VideoControl.tsx
 import React, { useState, useRef, useEffect } from 'react'
 import { io, Socket } from 'socket.io-client'
-
+import { Button } from "flowbite-react";
 type Mode = 'idle' | 'broadcaster' | 'viewer'
 const SIGNALING_SERVER_URL = 'https://120.232.252.116:5101'
 
@@ -152,22 +152,28 @@ export default function VideoControl() {
 
   // --- UI 渲染 ---
   return (
-    <div className="space-y-4">
-      <h1 className="text-2xl font-semibold">远程视频监控</h1>
+    <div className="relative h-full space-y-4">
+      <h1 className="text-2xl font-semibold text-center">远程视频监控</h1>
       {mode === 'idle' && (
-        <div className="flex space-x-4">
-          <button
-            className="px-4 py-2 bg-green-500 text-white rounded"
+        <div className="flex flex-nowrap gap-10 justify-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <Button
+            color="red"
+            pill
+            size="xl"
+            className="whitespace-nowrap"
             onClick={startBroadcast}
           >
-            开始发送（摄像头）
-          </button>
-          <button
-            className="px-4 py-2 bg-blue-500 text-white rounded"
+            开始发送
+          </Button>
+          <Button
+            color="green"
+            pill
+            size="xl"
+            className="whitespace-nowrap"
             onClick={startViewer}
           >
-            开始接收（观看）
-          </button>
+            开始接收
+          </Button>
         </div>
       )}
       {mode === 'broadcaster' && (

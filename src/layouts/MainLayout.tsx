@@ -9,7 +9,7 @@ export default function MainLayout() {
         <FlowbiteSidebar />
       </div>
       {/* 主体内容 */}
-      <main className="flex-1 bg-gray-100 p-6 overflow-auto">
+      <main className="flex-1 bg-gray-50 p-6 overflow-auto">
         <Outlet />
       </main>
       <Dock />
