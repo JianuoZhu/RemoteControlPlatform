@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { io, Socket } from 'socket.io-client'
 
 type Mode = 'idle' | 'broadcaster' | 'viewer'
-const SIGNALING_SERVER_URL = 'https://localhost:5000'
+const SIGNALING_SERVER_URL = 'https://120.232.252.116:5101'
 
 export default function VideoControl() {
   // --- 状态 & 引用 ---

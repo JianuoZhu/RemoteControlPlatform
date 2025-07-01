@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss(), flowbiteReact()],
   server: {
     host: true,
-    port: 3000,
+    port: 5100,
     https: {
       key:  fs.readFileSync('./certs/key.pem'),
       cert: fs.readFileSync('./certs/cert.pem'),
