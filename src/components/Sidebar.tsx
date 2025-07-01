@@ -28,7 +28,7 @@ export function Component() {
   };
   const itemBase = "relative overflow-hidden hover:bg-sky-50";
   return (
-    <Sidebar aria-label="Main Sidebar" className="`w-64 h-screen flex flex-col border-1 border-gray-200
+    <Sidebar aria-label="Main Sidebar" className="`w-64 flex-initial  h-screen flex flex-col border-1 border-gray-200
     [&>div.overflow-y-auto]:relative
     `">
         <div className="h-16 flex-none flex flex-row items-center justify-center">

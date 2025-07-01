@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "flowbite-react/plugin/tailwindcss";
+@plugin "daisyui";
 @source "../.flowbite-react/class-list.json";
 
 @layer utilities {
