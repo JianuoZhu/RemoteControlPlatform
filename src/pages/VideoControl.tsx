@@ -291,7 +291,7 @@ export default function VideoControl() {
               autoPlay
               playsInline
               muted={mode === 'broadcaster'}
-              className="h-128 bg-black rounded"
+              className=" bg-black rounded"
             />
           </div>
           {/* 断开连接按钮 */}
