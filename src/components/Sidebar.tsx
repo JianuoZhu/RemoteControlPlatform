@@ -1,6 +1,6 @@
 
 import { Sidebar, SidebarItem, SidebarItemGroup, SidebarItems, SidebarLogo} from "flowbite-react";
-import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from "react-icons/hi";
+import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards, HiCog } from "react-icons/hi";
 import { FaChartPie } from "react-icons/fa";
 import { IoVideocam } from "react-icons/io5";
 import { IoGameController } from "react-icons/io5";
@@ -54,6 +54,9 @@ export function Component() {
                 </SidebarItem>
                 <SidebarItem as={NavLink} to="/logs" className={itemBase} onMouseDown={createRipple} icon={FaBook}>
                     Logs
+                </SidebarItem>
+                <SidebarItem as={NavLink} to="/user-settings" className={itemBase} onMouseDown={createRipple} icon={HiCog}>
+                    用户配置
                 </SidebarItem>
                 </SidebarItemGroup>
             </SidebarItems>

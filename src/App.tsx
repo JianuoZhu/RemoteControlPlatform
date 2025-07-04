@@ -5,6 +5,7 @@ import VideoControl  from './pages/VideoControl'
 import AgentTasks    from './pages/AgentTasks'
 import RemoteControl from './pages/RemoteControl'
 import Logs          from './pages/Logs'
+import UserSettings  from './pages/UserSettings'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="agent-tasks"   element={<AgentTasks />} />
         <Route path="remote-control"element={<RemoteControl />} />
         <Route path="logs"          element={<Logs />} />
+        <Route path="user-settings" element={<UserSettings />} />
       </Route>
     </Routes>
   )
