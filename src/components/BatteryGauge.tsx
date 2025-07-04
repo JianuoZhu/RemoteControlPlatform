@@ -1,8 +1,25 @@
-import { motion } from "framer-motion";
+import { motion } from "framer-motion";// 0–100
+import { useEffect, useState, useRef} from 'react';
+import { getBatteryStatus } from "../api";
+export default function BatteryGauge() {
+  const [level, setLevel] = useState(0);
+  const intervalRef = useRef<null>(null);
+  useEffect(() => {
+    async function fetchBattery() {
+      try {
+        const data = await getBatteryStatus();
+        setLevel(data.level);
+      } catch (error) {
+        console.error("Failed to fetch battery status:", error);
+      }
+    }
+    fetchBattery();
+    intervalRef.current = setInterval(fetchBattery, 5000);
+    return () => {
+      clearInterval(intervalRef.current);
+    };
+  }, []);
 
-type Props = { level?: number }; // 0–100
-
-export default function BatteryGauge({ level = 72 }: Props) {
   const deg = (level / 100) * 360;
 
   return (

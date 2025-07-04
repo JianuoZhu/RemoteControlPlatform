@@ -1,15 +1,28 @@
 //假设机器人有六个关节
 import { motion } from "framer-motion";
+import { useEffect, useState, useRef} from 'react';
+import { getJointsStatus } from "../api";
 type Joint = { name: string; angle: number; healthy: boolean };
 
-const fakeJoints: Joint[] = [
-  { name: "J1", angle: 12, healthy: true },
-  { name: "J2", angle: -8, healthy: true },
-  { name: "J3", angle: 23, healthy: false },
-  // …
-];
 
-export default function JointStatus({ joints = fakeJoints }: { joints?: Joint[] }) {
+export default function JointStatus() {
+  const [joints, setJoints] = useState<Joint[]>([]);
+  const intervalRef = useRef<null>(null);
+  useEffect(() => {
+    async function fetchJoints() {
+      try {
+        const data = await getJointsStatus();
+        setJoints(data);
+      } catch (error) {
+        console.error("Failed to fetch joints status:", error);
+      }
+    }
+    fetchJoints();
+    intervalRef.current = setInterval(fetchJoints, 5000);
+    return () => {
+      clearInterval(intervalRef.current);
+    };
+  }, []);
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}

@@ -1,13 +1,26 @@
 import { motion } from "framer-motion";
+import { useEffect, useState, useRef} from 'react';
+import { getTasks } from "../api";
 type Task = { id: string; title: string; state: "queued" | "running" | "done" };
 
-const fakeTasks: Task[] = [
-  { id: "t1", title: "巡逻 A 区", state: "running" },
-  { id: "t2", title: "充电", state: "queued" },
-  { id: "t3", title: "上传日志", state: "done" },
-];
-
-export default function TaskQueue({ tasks = fakeTasks }: { tasks?: Task[] }) {
+export default function TaskQueue() {
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const intervalRef =useRef<null>(null);
+  useEffect(() => {
+    async function fetchTasks() {
+      try {
+        const data = await getTasks();
+        setTasks(data);
+      } catch (error) {
+        console.error("Failed to fetch tasks:", error);
+      }
+    }
+    fetchTasks();
+    intervalRef.current = setInterval(fetchTasks, 5000);
+    return () => {
+      clearInterval(intervalRef.current);
+    };
+  }, []);
   const badge = (s: Task["state"]) => {
     const map = {
       queued: "bg-sky-100 text-sky-600 dark:bg-sky-900/40 dark:text-sky-300",
@@ -16,7 +29,6 @@ export default function TaskQueue({ tasks = fakeTasks }: { tasks?: Task[] }) {
     };
     return map[s];
   };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
